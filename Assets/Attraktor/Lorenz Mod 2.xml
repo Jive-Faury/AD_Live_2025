@@ -1,0 +1,25 @@
+A	0.9
+B	5
+C	9.9
+D	1
+E	0
+F	0
+K	0
+Damping	0.5
+X	-(a*x)+(y*y)-(z*z)+(a*c)
+Y	x*(y-(b*z))+d
+Z	-z+x*((b*y)+z)
+Timestep	0.005
+Tx	0
+Ty	0
+Tz	0
+Rx	0
+Ry	0
+Rz	0
+Sx	1
+Sy	1
+Sz	1
+Uniformscale	1
+Emitterbypass	0
+Positionsbypass	0
+Notes:	

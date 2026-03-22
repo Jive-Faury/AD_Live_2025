@@ -1,0 +1,25 @@
+A	4
+B	6
+C	10
+D	5
+E	0
+F	0
+K	1
+Damping	0.1
+X	(a*x)-(b*y*z)
+Y	-(c*y)-(x*z)
+Z	(k*x)-(d*z)+(x*y)
+Timestep	0.01
+Tx	0
+Ty	0
+Tz	0
+Rx	0
+Ry	0
+Rz	0
+Sx	1
+Sy	1
+Sz	1
+Uniformscale	1
+Emitterbypass	0
+Positionsbypass	0
+Notes: interresting when play with Fact[YZ] 	

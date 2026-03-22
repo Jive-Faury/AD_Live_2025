@@ -1,0 +1,6 @@
+label	normMin	normMax	default
+FactX	-1	1	1
+FactY	-1	1	1
+FactZ	-1	1	1
+Drag	0.2	1.5	1
+DustVel	0.2	1.5	1

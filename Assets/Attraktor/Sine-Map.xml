@@ -1,0 +1,25 @@
+A	2.25
+B	0.3
+C	1
+D	0
+E	0
+F	0
+K	0
+Damping	1
+X	y
+Y	a*sin(x)+(b*y)
+Z	0
+Timestep	0.01
+Tx	0
+Ty	0
+Tz	0
+Rx	0
+Ry	0
+Rz	0
+Sx	1
+Sy	1
+Sz	1
+Uniformscale	1
+Emitterbypass	0
+Positionsbypass	0
+Notes: 2D strange attraktor	

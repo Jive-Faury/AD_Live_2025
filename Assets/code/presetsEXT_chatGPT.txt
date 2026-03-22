@@ -1,0 +1,207 @@
+﻿import json
+import os
+
+
+class Presets:
+    overWriteWarning = '''This preset already exists!
+
+You can choose to replace this preset
+and overwrite the values, or cancel
+this operation.
+'''
+
+    def __init__(self, ownerComp):
+        self.ownerComp = ownerComp
+
+        # paramètres custom du COMP qui porte l'extension
+        self.BuildFromOp = ownerComp.par.Buildfromoperator
+        self.SourceParPage = ownerComp.par.Sourceparpage
+        self.StorageOp = ownerComp.par.Storageop
+        self.DictName = ownerComp.par.Dictionaryname
+        self.PresetName = ownerComp.par.Presetname
+        self.PresetsFile = ownerComp.par.Presetsfile
+        self.AutoSave = ownerComp.par.Autosavetofile
+
+        print('Presets EXT initialized from {}'.format(ownerComp))
+
+    # -----------------------------
+    # Helpers
+    # -----------------------------
+
+    def _getBuildOp(self):
+        opTarget = self.BuildFromOp.eval()
+        if opTarget is None:
+            debug('Presets: missing Build From Operator target.')
+            return None
+        return opTarget
+
+    def _getStorageOp(self):
+        storageOp = self.StorageOp.eval()
+        if storageOp is None:
+            debug('Presets: missing Storage Operator target.')
+            return None
+        return storageOp
+
+    def _getDictName(self):
+        name = self.DictName.eval()
+        if not name:
+            debug('Presets: Dictionary name is empty.')
+            return None
+        return name
+
+    # -----------------------------
+    # UI / setup
+    # -----------------------------
+
+    def UpdateParPageList(self):
+        buildOp = self._getBuildOp()
+        if buildOp is None:
+            self.SourceParPage.menuNames = []
+            self.SourceParPage.menuLabels = []
+            return
+
+        pageNames = [page.name for page in buildOp.customPages]
+        self.SourceParPage.menuNames = pageNames
+        self.SourceParPage.menuLabels = pageNames
+
+    # -----------------------------
+    # Preset capture
+    # -----------------------------
+
+    def GetPagePars(self):
+        buildOp = self._getBuildOp()
+        if buildOp is None:
+            return {}
+
+        selectedPage = self.SourceParPage.eval()
+        presetVals = {}
+
+        for eachPar in buildOp.customPars:
+            if eachPar.page.name == selectedPage:
+                try:
+                    presetVals[eachPar.name] = eachPar.eval()
+                except Exception as e:
+                    debug('Presets: failed reading par {}: {}'.format(eachPar.name, e))
+
+        return presetVals
+
+    def GetPresetDict(self):
+        storageOp = self._getStorageOp()
+        dictName = self._getDictName()
+
+        if storageOp is None or dictName is None:
+            return {}
+
+        presetDict = storageOp.fetch(dictName, None)
+
+        if presetDict is None or not isinstance(presetDict, dict):
+            self.SetupPresetDict()
+            presetDict = storageOp.fetch(dictName, {})
+
+        return dict(presetDict)
+
+    def SetupPresetDict(self):
+        storageOp = self._getStorageOp()
+        dictName = self._getDictName()
+
+        if storageOp is None or dictName is None:
+            return
+
+        storageOp.store(dictName, {})
+
+    # -----------------------------
+    # Record
+    # -----------------------------
+
+    def PulseRecordPar(self):
+        presetName = self.PresetName.eval()
+        if not presetName:
+            ui.messageBox('Missing Preset Name', 'Preset name cannot be empty.', buttons=['OK'])
+            return
+
+        presetDict = self.GetPresetDict()
+        if not self.CheckPresetName(presetName, presetDict):
+            return
+
+        self.RecordPreset(presetDict)
+
+        if self.AutoSave.eval():
+            self.SavePresetsToDisk()
+
+    def CheckPresetName(self, presetName, presetDict):
+        if presetName in presetDict:
+            result = ui.messageBox(
+                'Existing Preset',
+                Presets.overWriteWarning,
+                buttons=['Cancel', 'Overwrite']
+            )
+            return result == 1
+
+        return True
+
+    def RecordPreset(self, presetDict):
+        storageOp = self._getStorageOp()
+        dictName = self._getDictName()
+
+        if storageOp is None or dictName is None:
+            return
+
+        presetDict[self.PresetName.eval()] = self.GetPagePars()
+        storageOp.store(dictName, presetDict)
+
+    # -----------------------------
+    # Disk I/O
+    # -----------------------------
+
+    def SavePresetsToDisk(self):
+        filePath = self.PresetsFile.eval()
+        dictName = self._getDictName()
+
+        if not filePath:
+            debug('Presets: Presets file path is empty.')
+            return
+
+        if dictName is None:
+            return
+
+        folder = os.path.dirname(filePath)
+        if folder and not os.path.exists(folder):
+            os.makedirs(folder, exist_ok=True)
+
+        jsonToFile = {
+            dictName: self.GetPresetDict()
+        }
+
+        try:
+            with open(filePath, 'w', encoding='utf-8') as jsonFile:
+                json.dump(jsonToFile, jsonFile, indent=4, ensure_ascii=False)
+        except Exception as e:
+            debug('Presets: failed saving JSON: {}'.format(e))
+
+    def LoadPresetsFromFile(self):
+        storageOp = self._getStorageOp()
+        filePath = self.PresetsFile.eval()
+
+        if storageOp is None:
+            return
+
+        if not filePath or not os.path.isfile(filePath):
+            debug('Presets: preset file does not exist: {}'.format(filePath))
+            return
+
+        try:
+            with open(filePath, 'r', encoding='utf-8') as jsonFile:
+                pythonDict = json.load(jsonFile)
+
+            if not isinstance(pythonDict, dict):
+                debug('Presets: invalid JSON root, expected dict.')
+                return
+
+            for eachKey, eachDict in pythonDict.items():
+                if isinstance(eachDict, dict):
+                    storageOp.store(eachKey, eachDict)
+                else:
+                    debug('Presets: skipped non-dict entry "{}"'.format(eachKey))
+
+        except Exception as e:
+            debug('Presets: failed loading JSON: {}'.format(e))

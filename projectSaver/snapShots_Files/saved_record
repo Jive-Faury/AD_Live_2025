@@ -1,0 +1,19 @@
+{
+    "Bank": {
+        "defaults0": {
+            "Type": "Movie",
+            "Imagemovie": false,
+            "Record": false,
+            "N": 0,
+            "Resetn": false,
+            "Videocodec": "mjpa",
+            "Moviepixelformat": "yuv420",
+            "Fps": 60.0,
+            "Audiocodec": "pcm16",
+            "Renderfolder": "Render_Folder",
+            "Openparameters": false,
+            "Play": true,
+            "Realtime": true
+        }
+    }
+}

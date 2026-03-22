@@ -1,0 +1,25 @@
+A	38
+B	2.667
+C	80
+D	0
+E	0
+F	0
+K	0
+Damping	0.01
+X	a*(y-x)+(y*z)
+Y	(c*x)+y-(x*z)
+Z	(x*y)-(b*z)
+Timestep	0.008
+Tx	0
+Ty	0
+Tz	0
+Rx	0
+Ry	90
+Rz	0
+Sx	1
+Sy	1
+Sz	1
+Uniformscale	1
+Emitterbypass	0
+Positionsbypass	0
+Notes: double spiral inverse 	

@@ -1,0 +1,4 @@
+label	normMin	normMax	default
+FactX	-1	1	1
+FactY	-1	1	1
+FactZ	-1	1	1

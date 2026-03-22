@@ -1,0 +1,25 @@
+A	10
+B	16
+C	-0.143
+D	0
+E	0
+F	0
+K	0
+Damping	1
+X	a*(y-(pow(x,3))-(c*y))
+Y	x-y+z
+Z	-b*y
+Timestep	0.004
+Tx	0
+Ty	0
+Tz	-1.5
+Rx	0
+Ry	90
+Rz	0
+Sx	1
+Sy	3.5
+Sz	1
+Uniformscale	1
+Emitterbypass	0
+Positionsbypass	0
+Notes: 	

@@ -1,0 +1,36 @@
+{
+    "Bank": {
+        "defaults0": {
+            "Depthinterpolationmodel": "scurve",
+            "Inversedistanceexponent": 1.0,
+            "Distancenear": 2.9,
+            "Distancefar": 7.1,
+            "Widthnear": 4.0,
+            "Widthfar": 2.0,
+            "Widthbias": 0.0,
+            "Widthsteepness": 1.0,
+            "Widthlinearize": 0.0,
+            "Colorbias": 0.0,
+            "Colorsteepness": 1.0,
+            "Colorlinearize": 0.0,
+            "Postmultalpha": true,
+            "Liftdirection": "towardcamera",
+            "Liftscale": 5.0,
+            "Numptsincircle": 15,
+            "Pointtype": "circle",
+            "Pointsizemultiplier": 1.7,
+            "Pointnearcolorr": 1.2,
+            "Pointnearcolorg": 1.2,
+            "Pointnearcolorb": 1.2,
+            "Pointnearalpha": 1.0,
+            "Specifypointfarcolor": false,
+            "Pointfarcolorr": 0.3,
+            "Pointfarcolorg": 0.3,
+            "Pointfarcolorb": 0.3,
+            "Pointfaralpha": 1.0,
+            "Pointliftdirection": "towardcamera",
+            "Pointliftscale": 10.0,
+            "Blending": false
+        }
+    }
+}
