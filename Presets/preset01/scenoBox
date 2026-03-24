@@ -1,0 +1,14 @@
+name	value	page
+Activation	1	Sceno
+Geoviewer	0	Sceno
+Scenotransformation		Sceno
+Scenoselect	grid	Sceno
+Properties	0	Sceno
+Transform	0	Sceno
+Texture	0	Sceno
+Scenofile	Assets/sceno/studio01.hclassic	Sceno
+Scenodesign		Sceno
+Matselection	Phong	Sceno
+Matpars	0	Sceno
+Matbox	0	Sceno
+Resetsceno	0	Sceno

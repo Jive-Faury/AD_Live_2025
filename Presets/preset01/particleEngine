@@ -1,0 +1,86 @@
+name	value	page
+Setdefaults	0	Particles
+Textureresolution	100	Particles
+Nbparticles	10000	Particles
+Transitiontime	1.0	Particles
+Onoff	1	Particles
+Drag	1.0	Particles
+Lifetime	15.0	Particles
+Shaper	1.0	Particles
+Sizevariance	0.0	Particles
+Particledesign		Particles
+Select2	Point	Particles
+Sopparameters2	0	Particles
+Matselect	Line	Particles
+Matparameters2	0	Particles
+Showemit	0	Emitter
+Source	Noise	Emitter
+Openpars	0	Emitter
+Pointcloud		Emitter
+Pointfile	Assets/pointCloud/whiteBeans.ply	Emitter
+Reloadpulse	0	Emitter
+Positiondata	0	Emitter
+Pselect1	0	Emitter
+Maxcolorvalue	1	Emitter
+Customemitter		Emitter
+Customnetwork	0	Emitter
+Transactive	0	Forces
+Windforce		Forces
+Windx	0.0	Forces
+Windy	0.0	Forces
+Windz	0.0	Forces
+Windmag	0.0	Forces
+Turbulenceforce		Forces
+Addturbulence	0	Forces
+Turbx	0.0	Forces
+Turby	0.0	Forces
+Turbz	0.0	Forces
+Turbperiod	0.0	Forces
+Timeuniform2		Forces
+Timeuniform	0	Forces
+Coloronoff	0	Color
+Colorview	0	Color
+Colorsource	ramp1	Color
+Colorpars	0	Color
+Imagefilein		Color
+File		Color
+Imageinfit	0	Color
+Colorthreshold		Color
+Colorthresh	0	Color
+Switchbc	0	Color
+Lumithresh1	0.0	Color
+Lumithresh2	0.0	Color
+Lumithresh3	0.0	Color
+Inputactiv	0	Flow
+Flowviewer	0	Flow
+Resetsim	0	Flow
+Sourceinput		Flow
+Source2	Auto	Flow
+Inputmag	0.1	Flow
+Inputmapx	5.0	Flow
+Inputmapy	5.0	Flow
+Opticalflowpars		Flow
+Force	0.5	Flow
+Offset	3	Flow
+Lambda	0.1	Flow
+Threshold	0.0	Flow
+Fluidpars		Flow
+Dissipation	0.2	Flow
+Drag2	0.5	Flow
+Activecurldust	0	Dust
+Resetcurldust	0	Dust
+Curlparameters		Dust
+Velocity	1.0	Dust
+Noisescale	0.25	Dust
+Noiseamplitude	0.15	Dust
+Lifelimit	100	Dust
+Initialvariance	0.25	Dust
+Rampparameters2	0	Dust
+Noisesizepars	0	Dust
+Dustdesign		Dust
+Select	Point	Dust
+Sopparameters	0	Dust
+Matparameters	0	Dust
+Color		Dust
+Rampparameters	0	Dust
+Colorblend	0.0	Dust

@@ -1,0 +1,28 @@
+name	value	page
+Opennetwork	0	Sceno
+Switch	0	Sceno
+Noisepars	0	Sceno
+Activediff	0	Sceno
+Diffuse		Sceno
+Level1	0	Sceno
+Activespec	0	Sceno
+Specular		Sceno
+Level2	0	Sceno
+Activemetal	0	Sceno
+Metal		Sceno
+Level3	0	Sceno
+Activerough	0	Sceno
+Roughness		Sceno
+Level4	0	Sceno
+Activeao	0	Sceno
+Ao		Sceno
+Level5	0	Sceno
+Activenorm	0	Sceno
+Normal		Sceno
+Level6	0	Sceno
+Activeheight	0	Sceno
+Height		Sceno
+Level7	0	Sceno
+Activesubstance	0	Substance Mat
+Sbrar		Substance Mat
+Sbsarpars	0	Substance Mat
