@@ -1,0 +1,46 @@
+{
+  "test": {
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 1.0,
+    "Scaley": 1.0,
+    "Scalez": 1.0
+  },
+  "test_001": {
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 1.0,
+    "Scaley": 1.0,
+    "Scalez": 1.0
+  },
+  "test_002": {
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 1.0,
+    "Scaley": 1.0,
+    "Scalez": 1.0
+  },
+  "test_003": {
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 1.0,
+    "Scaley": 1.0,
+    "Scalez": 1.0
+  }
+}

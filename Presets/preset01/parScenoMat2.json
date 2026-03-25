@@ -1,0 +1,38 @@
+{
+  "test": {
+    "Colorr": 1.0,
+    "Colorg": 1.0,
+    "Colorb": 1.0,
+    "Alpha": 1.0,
+    "Wireframemode": "tesselated",
+    "Linewidth": 1.0,
+    "Opennativepars": 0
+  },
+  "test_001": {
+    "Colorr": 1.0,
+    "Colorg": 1.0,
+    "Colorb": 1.0,
+    "Alpha": 1.0,
+    "Wireframemode": "tesselated",
+    "Linewidth": 1.0,
+    "Opennativepars": 0
+  },
+  "test_002": {
+    "Colorr": 1.0,
+    "Colorg": 1.0,
+    "Colorb": 1.0,
+    "Alpha": 1.0,
+    "Wireframemode": "tesselated",
+    "Linewidth": 1.0,
+    "Opennativepars": 0
+  },
+  "test_003": {
+    "Colorr": 1.0,
+    "Colorg": 1.0,
+    "Colorb": 1.0,
+    "Alpha": 1.0,
+    "Wireframemode": "tesselated",
+    "Linewidth": 1.0,
+    "Opennativepars": 0
+  }
+}

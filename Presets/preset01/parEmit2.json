@@ -1,0 +1,50 @@
+{
+  "test": {
+    "Shape": "sphere",
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 5.0,
+    "Scaley": 2.0,
+    "Scalez": 2.0
+  },
+  "test_001": {
+    "Shape": "sphere",
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 5.0,
+    "Scaley": 2.0,
+    "Scalez": 2.0
+  },
+  "test_002": {
+    "Shape": "sphere",
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 5.0,
+    "Scaley": 2.0,
+    "Scalez": 2.0
+  },
+  "test_003": {
+    "Shape": "sphere",
+    "Translatex": 0.0,
+    "Translatey": 0.0,
+    "Translatez": 0.0,
+    "Rotatex": 0.0,
+    "Rotatey": 0.0,
+    "Rotatez": 0.0,
+    "Scalex": 5.0,
+    "Scaley": 2.0,
+    "Scalez": 2.0
+  }
+}
