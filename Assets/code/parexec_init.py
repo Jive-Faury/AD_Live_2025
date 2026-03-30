@@ -26,8 +26,10 @@ def onPulse(par):
 		op.reset.click()
 		op.render.op('cam1').par.Reset.pulse()
 		op.pars.op('resetAllSliders').run(delayFrames=15)
-		op.audioEnable.panel.state =0
-		op.audioOptimize.panel.state = 1
+		#op.audioEnable.panel.state =0
+		op.audioBox.par.Enableanalyzer = False
+		#op.audioOptimize.panel.state = 1
+		op.audioBox.par.Optimize = True
 		op.activePars.par.Value0 = 0
 		op.pars.op('switchInput').par.index = 0
 		op.seqActive.par.Value0 = 0
