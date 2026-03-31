@@ -21,7 +21,7 @@ def onKey(dat, key, character, alt, lAlt, rAlt, ctrl, lCtrl, rCtrl, shift, lShif
 
 def onShortcut(dat, shortcutName, time):
 	
-	if shortcutName == 'shift.alt.r':
+	if shortcutName == 'shift.r':
 		op.reset.click()
 		op.pars.par.Resetalllfo.pulse()
 	
