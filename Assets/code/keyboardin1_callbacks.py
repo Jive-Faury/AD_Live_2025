@@ -42,7 +42,10 @@ def onShortcut(dat, shortcutName, time):
 		op.render.op('cam1').par.Autorotate = 1 if op.render.op('cam1').par.Autorotate == 0 else 0
 	
 	elif shortcutName == 'ctrl.shift.alt.r':
-		op.render.par.Record = 1 if op.render.par.Record == 0 else 0	
+		op.render.par.Record = 1 if op.render.par.Record == 0 else 0
+		
+	elif shortcutName == 'shift.e':
+		op.render.op('cam1').par.Reset.pulse()
 	
 	return
 	
