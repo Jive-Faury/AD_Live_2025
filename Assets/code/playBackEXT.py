@@ -1,78 +1,70 @@
-class playBackEXT:
-	"""
-	playBackEXT description
-	"""
-	def __init__(self, ownerComp):
-		# The component to which this extension is attached
-		self.ownerComp     = ownerComp
-		self.activation    = ownerComp.par.Activation
-		self.onoff         = ownerComp.par.Onoff
-		self.play          = ownerComp.par.Play
-		self.loop          = ownerComp.par.Loop
-		self.playbackdata  = ownerComp.par.Playbackdata
-		self.playbackaudio = ownerComp.par.Playbackaudio
-		self.audioName     = ownerComp.op('audioName')
+﻿class playBackEXT:
 
-	def Activation(self):
+    def __init__(self, ownerComp):
+        self.ownerComp     = ownerComp
+        self.activation    = ownerComp.par.Activation
+        self.onoff         = ownerComp.par.Onoff
+        self.play          = ownerComp.par.Play
+        self.loop          = ownerComp.par.Loop
+        self.playbackdata  = ownerComp.par.Playbackdata
+        self.playbackaudio = ownerComp.par.Playbackaudio
+        self.audioName     = ownerComp.op('audioName')
 
-		op('../info1').bypass = 1 - self.activation
-		op('routing').bypass  = 1 - self.activation
-		op('../chopexec_recstop').par.active = self.activation.eval()
-		#op('chopexec_realTime').par.active = self.activation.eval()
+    def _setBypass(self, opPath, bypass: bool):
+        self.ownerComp.op(opPath).bypass = bypass
 
-		if self.activation == True:
-			op('resetButtons').run()				
-			op('record1').par.record = 3
-			op.playAudio.panel.state = 0
-			op.cycleAudio.panel.state = 0
-			op.reloadAudio.click()
-			
-		else :
-			op('record1').par.record = 0
-			op.reloadAudio.click()
-			#project.realTime = 1
+    def Activation(self):
+        active = self.activation.eval()
 
+        self._setBypass('../info1', not active)
+        self._setBypass('routing',  not active)
+        self.ownerComp.op('../chopexec_recstop').par.active = active
 
-	def Onoff(self):
-		op('timer1').bypass = 1 - self.onoff
-		op.audioBox.op('switch3').par.index = self.onoff.eval()
+        if active:
+            self.ownerComp.op('resetButtons').run()
+            self.ownerComp.op('record1').par.record = 3
+            op.playAudio.panel.state  = 0
+            op.cycleAudio.panel.state = 0
+            op.reloadAudio.click()
+        else:
+            self.ownerComp.op('record1').par.record = 0
+            op.reloadAudio.click()
 
+    def Onoff(self):
+        onoff = self.onoff.eval()
+        self._setBypass('timer1', not onoff)
+        op.audioBox.op('switch3').par.index = int(onoff)
 
-	def Init(self):
-		op.sequencerCam.op('clock').par.resetpulse.pulse()
-		op.sequencer.op('clock').par.resetpulse.pulse()
-		op('timer1').par.initialize.pulse()
-		op('timer1').par.start.pulse()
+    def Init(self):
+        for clock_parent in (op.sequencerCam, op.sequencer):
+            clock_parent.op('clock').par.resetpulse.pulse()
+        timer = self.ownerComp.op('timer1')
+        timer.par.initialize.pulse()
+        timer.par.start.pulse()
 
-	def Play(self):
-		op('timer1').par.play = self.play.eval()
+    def Play(self):
+        self.ownerComp.op('timer1').par.play = self.play.eval()
 
-	def Loop(self):
-			op('timer1').par.cycle = self.loop.eval()
-			if self.loop == True:
-				op('audiofilein1').par.repeat = 1
-			else:
-				op('audiofilein1').par.repeat = 0
+    def Loop(self):
+        loop = self.loop.eval()
+        self.ownerComp.op('timer1').par.cycle = loop
+        self.ownerComp.op('audiofilein1').par.repeat = int(loop)
 
-	def SaveData(self):
-		path = ui.chooseFile(load=False,fileTypes=['clip'],title='Save Play Back as:')
-		if (path):
-			op('shift1').save(path)
+    def SaveData(self):
+        path = ui.chooseFile(load=False, fileTypes=['clip'], title='Save Play Back as:')
+        if path:
+            self.ownerComp.op('shift1').save(path)
+        else:
+            debug('[playBackEXT] SaveData: aucun fichier sélectionné.')
 
-		#dataFile = 'Assets/audio/playBack/' +str(self.audioName[0,0]) +'.clip'
-		#op('shift1').save(dataFile)
+    def PlayBackData(self):
+        self._setBypass('../info1', not self.playbackdata.eval())
 
-	def PlayBackData(self):
-		if self.playbackdata == True:
-			op('../info1').bypass = True
-		else:
-			op('../info1').bypass = False
-	
-	def PlayBackAudio(self):
-		op('audiofilein1').bypass = 1 - self.playbackaudio
-		op('audiodevout1').bypass = 1 - self.playbackaudio		
-
-		if self.playbackaudio == True:
-			op.record.op('moviefileout1').par.audiochop.expr = "op.playBackBox.op('audiofilein1')"
-		else:
-			op.record.op('moviefileout1').par.audiochop.expr = "op.audioBox.op('audiofilein1')"
+    def PlayBackAudio(self):
+        active = self.playbackaudio.eval()
+        self._setBypass('audiofilein1', not active)
+        self._setBypass('audiodevout1', not active)
+        op.record.op('moviefileout1').par.audiochop.expr = (
+            "op.playBackBox.op('audiofilein1')" if active
+            else "op.audioBox.op('audiofilein1')"
+        )
